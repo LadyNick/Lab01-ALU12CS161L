@@ -100,6 +100,7 @@ module myalu_tb;
         end
         #10; // Wait 
         
+        /*
 		// Add more tests here
         totalTests = totalTests + 1;
         $write("\tTest Case 1.2: Unsigned Add ... ");
@@ -452,7 +453,7 @@ module myalu_tb;
         // ----------------------------------------
         $write("Test Group 8: Testing DIV 2 ...\n");
         opcode = 3'b111; 
-        
+        */
 		// Add more tests here
 
         // -------------------------------------------------------

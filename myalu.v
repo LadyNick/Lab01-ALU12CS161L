@@ -38,75 +38,92 @@ module myalu # ( parameter NUMBITS = 16 ) (
 
     always @(posedge clk) begin
         case(opcode)
-            3b'000: begin //Unsigned Add
+            3'b000: begin //Unsigned Add
                 {carryout, result} = A + B;
-                if(result == 0){
+                if(result == 0)
                     zero = 1;
-                }
-                else{
+                else 
                     zero = 0;
-                }
                 overflow = 0;
             end
-            3b'001: begin //Signed Add
+            3'b001: begin //Signed Add
+                //result = ;
+                if(result == 0)
+                    zero = 1;
+                else
+                    zero = 0;
+                carryout = 0;
+                if( A >= 0 && B >= 0 && result < 0)
+                    overflow = 1;
+                else if( A < 0 && B < 0 && result >= 0)
+                    overflow = 1;
+                else
+                    overflow = 0;   
             end
-            3b'010: begin //Unsigned Sub
+            3'b010: begin //Unsigned Sub
                 {carryout, result} = A - B;
-                if(result == 0){
+                if(result == 0)
                     zero = 1;
-                }
-                else{
+                else
                     zero = 0;
-                }
                 overflow = 0;
             end
-            3b'011: begin // Signed Sub
+            3'b011: begin // Signed Sub
+                //result = ;
+                if(result == 0)
+                    zero = 1;
+                else
+                    zero = 0;
+                carryout = 0;
+                if(A >= 0 && B < 0 && result < 0)
+                    overflow = 1;
+                else if( A < 0 && B >= 0 && result >= 0)
+                    overflow = 1;
+                else
+                    overflow = 0;
             end
-            3b'100: begin //AND
+            3'b100: begin //AND
                 result = A & B;
-                if(result == 0){
+                if(result == 0)
                     zero = 1;
-                }
-                else{
+                else
                     zero = 0;
-                }
                 carryout = 0;
                 overflow = 0;
             end
-            3b'101: begin //OR
+            3'b101: begin //OR
                 result = A | B;
-                if(result == 0){
+                if(result == 0)
                     zero = 1;
-                }
-                else{
+                else
                     zero = 0;
-                }
                 carryout = 0;
                 overflow = 0;
             end
-            3b'110: begin //XOR
+            3'b110: begin //XOR
                 result = A ^ B;
-                if(result == 0){
+                if(result == 0)
                     zero = 1;
-                }
-                else{
+                else
                     zero = 0;
-                }
                 carryout = 0;
                 overflow = 0;
             end
-            3b'111: begin //Divide A by 2
+            3'b111: begin //Divide A by 2
                 result = A / 2;
-                if(result == 0){
+                if(result == 0)
                     zero = 1;
-                }
-                else{
+                else
                     zero = 0;
-                }
                 carryout = 0;
                 overflow = 0;
             end
-            default: 
+            default: begin
+                result = 0;
+                zero = 0;
+                carryout = 0;
+                overflow = 0;
+            end 
         endcase
     end
 
