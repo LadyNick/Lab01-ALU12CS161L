@@ -53,9 +53,9 @@ module myalu # ( parameter NUMBITS = 16 ) (
                 else
                     zero = 0;
                 carryout = 0;
-                if( $signed(A) >= 0 && $signed(B) >= 0 && result < 0)
+                if( $signed(A) >= 0 && $signed(B) >= 0 && $signed(result) < 0)
                     overflow = 1;
-                else if( $signed(A) < 0 && $signed(B) < 0 && result >= 0)
+                else if( $signed(A) < 0 && $signed(B) < 0 && $signed(result) >= 0)
                     overflow = 1;
                 else
                     overflow = 0;   
@@ -75,9 +75,9 @@ module myalu # ( parameter NUMBITS = 16 ) (
                 else
                     zero = 0;
                 carryout = 0;
-                if($signed(A) >= 0 && $signed(B) < 0 && result < 0)
+                if($signed(A) >= 0 && $signed(B) < 0 && $signed(result) < 0)
                     overflow = 1;
-                else if( $signed(A) < 0 && $signed(B) >= 0 && result >= 0)
+                else if( $signed(A) < 0 && $signed(B) >= 0 && $signed(result) >= 0)
                     overflow = 1;
                 else
                     overflow = 0;
