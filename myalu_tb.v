@@ -116,7 +116,7 @@ module myalu_tb;
             $write("passed\n");
         end
         #10; // Wait 
-        /*
+        
         totalTests = totalTests + 1;
         $write("\tTest Case 1.3: Unsigned Add ... ");
         A = 8'h0D;
@@ -131,7 +131,7 @@ module myalu_tb;
             $write("passed\n");
         end
         #10; // Wait 
-
+        /*
         // ---------------------------------------------
         // Testing unsigned subs 
         // --------------------------------------------- 
