@@ -47,15 +47,15 @@ module myalu # ( parameter NUMBITS = 16 ) (
                 overflow = 0;
             end
             3'b001: begin //Signed Add
-                //result = ;
+                result = $signed(A) + $signed(B);
                 if(result == 0)
                     zero = 1;
                 else
                     zero = 0;
                 carryout = 0;
-                if( A >= 0 && B >= 0 && result < 0)
+                if( $signed(A) >= 0 && $signed(B) >= 0 && result < 0)
                     overflow = 1;
-                else if( A < 0 && B < 0 && result >= 0)
+                else if( $signed(A) < 0 && $signed(B) < 0 && result >= 0)
                     overflow = 1;
                 else
                     overflow = 0;   
@@ -69,15 +69,15 @@ module myalu # ( parameter NUMBITS = 16 ) (
                 overflow = 0;
             end
             3'b011: begin // Signed Sub
-                //result = ;
+                result = $signed(A) - $signed(B);
                 if(result == 0)
                     zero = 1;
                 else
                     zero = 0;
                 carryout = 0;
-                if(A >= 0 && B < 0 && result < 0)
+                if($signed(A) >= 0 && $signed(B) < 0 && result < 0)
                     overflow = 1;
-                else if( A < 0 && B >= 0 && result >= 0)
+                else if( $signed(A) < 0 && $signed(B) >= 0 && result >= 0)
                     overflow = 1;
                 else
                     overflow = 0;
