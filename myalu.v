@@ -4,8 +4,8 @@
 // Email: nnava026@ucr.edu 
 // 
 // Assignment name: Lab01-ALU
-// Lab section: 022
-// TA: 
+// Lab section: 021
+// TA: Jincong Lu
 // 
 // I hereby certify that I have not received assistance on this assignment,
 // or used code, from ANY outside source other than the instruction team
