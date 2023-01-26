@@ -51,4 +51,4 @@ Testbench Descriptions:
 8.3: Divide A: 0x5C by 2, B is set to 0xAB, but B shouldn't affect anything because this operation only handles A. The result should be 0x2E. The result isn't 0, so zero should be 0. Overflow and Carryout do not matter.
 
 Waveform Screenshot:
-![waveform](cs161lab1waveform.png)
+![waveform](cs161lab1waveform.PNG)
