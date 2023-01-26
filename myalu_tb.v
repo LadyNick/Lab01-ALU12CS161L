@@ -131,7 +131,7 @@ module myalu_tb;
             $write("passed\n");
         end
         #10; // Wait 
-        /*
+        
         // ---------------------------------------------
         // Testing unsigned subs 
         // --------------------------------------------- 
@@ -174,10 +174,10 @@ module myalu_tb;
         $write("\tTest Case 2.3: Unsigned Sub ... ");
         A = 8'hFF;
         B = 8'h01;
-        expected_result = 8'h00;
+        expected_result = 8'hFE;
 
         #100; // Wait 
-        if (expected_result !== result || zero !== 1'b1 || carryout !== 1'b1) begin
+        if (expected_result !== result || zero !== 1'b0 || carryout !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -185,6 +185,7 @@ module myalu_tb;
         end
         #10; // Wait 
 
+        
         // ---------------------------------------------
         // Testing signed adds 
         // --------------------------------------------- 
@@ -194,12 +195,12 @@ module myalu_tb;
 		// Add more tests here
         totalTests = totalTests + 1;
         $write("\tTest Case 3.1: Signed Add ... ");
-        A = 8'h;
-        B = 8'h;
-        expected_result = 8'h00;
+        A = 8'hAB;
+        B = 8'hBC;
+        expected_result = 8'h67;
 
         #100; // Wait 
-        if (expected_result !== result || zero !== 1'b1 || carryout !== 1'b1) begin
+        if (expected_result !== result || zero !== 1'b0 || overflow !== 1'b1) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -209,12 +210,12 @@ module myalu_tb;
 
         totalTests = totalTests + 1;
         $write("\tTest Case 3.2: Signed Add ... ");
-        A = 8'h;
-        B = 8'h;
-        expected_result = 8'h00;
+        A = 8'h65;
+        B = 8'h39;
+        expected_result = 8'h9E;
 
         #100; // Wait 
-        if (expected_result !== result || zero !== 1'b1 || carryout !== 1'b1) begin
+        if (expected_result !== result || zero !== 1'b0 || overflow !== 1'b1) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -224,19 +225,20 @@ module myalu_tb;
 
         totalTests = totalTests + 1;
         $write("\tTest Case 3.3: Signed Add ... ");
-        A = 8'h;
-        B = 8'h;
-        expected_result = 8'h00;
+        A = 8'h10;
+        B = 8'h13;
+        expected_result = 8'h23;
 
         #100; // Wait 
-        if (expected_result !== result || zero !== 1'b1 || carryout !== 1'b1) begin
+        if (expected_result !== result || zero !== 1'b0 || overflow !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
             $write("passed\n");
         end
         #10; // Wait 
-
+        
+        
         // ---------------------------------------------
         // Testing signed subs 
         // --------------------------------------------- 
@@ -248,10 +250,10 @@ module myalu_tb;
         $write("\tTest Case 4.1: Signed Sub ... ");
         A = 8'h88;
         B = 8'h4A;
-        expected_result = 8'hD2;
+        expected_result = 8'h3E;
 
         #100; // Wait 
-        if (expected_result !== result || zero !== 1'b0 || carryout !== 1'b0) begin
+        if (expected_result !== result || zero !== 1'b0 || overflow !== 1'b1) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -259,14 +261,15 @@ module myalu_tb;
         end
         #10; // Wait 
 
+        
         totalTests = totalTests + 1;
         $write("\tTest Case 4.2: Signed Sub ... ");
-        A = 8'h;
-        B = 8'h;
-        expected_result = 8'h00;
+        A = 8'hEF;
+        B = 8'hCD;
+        expected_result = 8'h22;
 
         #100; // Wait 
-        if (expected_result !== result || zero !== 1'b1 || carryout !== 1'b1) begin
+        if (expected_result !== result || zero !== 1'b0 || overflow !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -276,20 +279,20 @@ module myalu_tb;
 
         totalTests = totalTests + 1;
         $write("\tTest Case 4.3: Signed Sub ... ");
-        A = 8'h;
-        B = 8'h;
-        expected_result = 8'h00;
+        A = 8'h94;
+        B = 8'h12;
+        expected_result = 8'h82;
 
         #100; // Wait 
-        if (expected_result !== result || zero !== 1'b1 || carryout !== 1'b1) begin
+        if (expected_result !== result || zero !== 1'b0 || overflow !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
             $write("passed\n");
         end
         #10; // Wait 
-
-
+        
+        
         // ---------------------------------------------
         // Testing ANDS 
         // --------------------------------------------- 
@@ -303,7 +306,7 @@ module myalu_tb;
         expected_result = 8'h00;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b1) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -318,7 +321,7 @@ module myalu_tb;
         expected_result = 8'hAA;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -333,7 +336,7 @@ module myalu_tb;
         expected_result = 8'h88;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -342,7 +345,7 @@ module myalu_tb;
         #10;// Wait  
 
 		// Add more tests here
-
+        
         // ----------------------------------------
         // ORs 
         // ---------------------------------------- 
@@ -357,7 +360,7 @@ module myalu_tb;
         expected_result = 8'hFF;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -372,7 +375,7 @@ module myalu_tb;
         expected_result = 8'h88;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -381,13 +384,13 @@ module myalu_tb;
         #10;// Wait 
 
         totalTests = totalTests + 1;
-        $write("\tTest Case 6.2: OR ... ");
+        $write("\tTest Case 6.3: OR ... ");
         A = 8'hAA;
         B = 8'h55;
         expected_result = 8'hFF;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -395,7 +398,7 @@ module myalu_tb;
         end
         #10;// Wait 
 
-
+        
         // ----------------------------------------
         // XORs 
         // ---------------------------------------- 
@@ -410,7 +413,7 @@ module myalu_tb;
         expected_result = 8'hFF;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -425,7 +428,7 @@ module myalu_tb;
         expected_result = 8'h00;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b1) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
@@ -440,21 +443,66 @@ module myalu_tb;
         expected_result = 8'h55;
 
         #100; //Wait
-        if (expected_result !== result) begin
+        if (expected_result !== result || zero !== 1'b0) begin
             $write("failed\n");
             failedTests = failedTests + 1;
         end else begin
             $write("passed\n");
         end
         #10;// Wait 
+        
 
         // ----------------------------------------
         // Div 2 
         // ----------------------------------------
         $write("Test Group 8: Testing DIV 2 ...\n");
         opcode = 3'b111; 
-        */
+        
 		// Add more tests here
+        totalTests = totalTests + 1;
+        $write("\tTest Case 8.1: Testing DIV 2 ... ");
+        A = 8'hFF;
+        B = 8'hFF;
+        expected_result = 8'h7F;
+
+        #100; // Wait 
+        if (expected_result !== result || zero !== 1'b0) begin
+            $write("failed\n");
+            failedTests = failedTests + 1;
+        end else begin
+            $write("passed\n");
+        end
+        #10; // Wait 
+
+        totalTests = totalTests + 1;
+        $write("\tTest Case 8.2: Testing DIV 2 ... ");
+        A = 8'h00;
+        B = 8'h01;
+        expected_result = 8'h00;
+
+        #100; // Wait 
+        if (expected_result !== result || zero !== 1'b1) begin
+            $write("failed\n");
+            failedTests = failedTests + 1;
+        end else begin
+            $write("passed\n");
+        end
+        #10; // Wait
+
+        totalTests = totalTests + 1;
+        $write("\tTest Case 8.3: Testing DIV 2 ... ");
+        A = 8'h5C;
+        B = 8'hAB;
+        expected_result = 8'h2E;
+
+        #100; // Wait 
+        if (expected_result !== result || zero !== 1'b0 ) begin
+            $write("failed\n");
+            failedTests = failedTests + 1;
+        end else begin
+            $write("passed\n");
+        end
+        #10; // Wait
 
         // -------------------------------------------------------
         // End testing
